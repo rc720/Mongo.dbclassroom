@@ -1,584 +1,197 @@
-use library_db
-switched to db library_db
+use Library_DB
+
 db.createCollection("books")
-{ ok: 1 }
+
 db.books.insertMany([
-  {
-    title:"Moksh",
-    author:"Vedvyas",
-    genre:"Sprituality",
-    price:500,
-    availableCopies:35
-  },
-  {
-    title:"Two Tales",
-    author:"harsh",
-    genre:"Story",
-    price:300,
-    availableCopies:2
-  },
-  {
-    title:"Love is Blind",
-    author:"rohit",
-    genre:"Story",
-    price:400,
-    availableCopies:5,
-  },
-  {
-    title:"Bengal:The Original",
-    author:"sara",
-    genre:"Politics",
-    price:1000,
-    availableCopies:6
-  },
-  {
-    title:"Food For Life",
-    author:"Omkar",
-    genre:"Recipe",
-    price:500,
-    availableCopies:4
-  }
+{
+    _id: 1,
+    title: "The Alchemist",
+    author: "Paulo Coelho",
+    genre: "Fiction",
+    price: 450,
+    availableCopies: 5
+},
+{
+    _id: 2,
+    title: "Rich Dad Poor Dad",
+    author: "Robert Kiyosaki",
+    genre: "Finance",
+    price: 350,
+    availableCopies: 3
+},
+{
+    _id: 3,
+    title: "Wings of Fire",
+    author: "A.P.J Abdul Kalam",
+    genre: "Biography",
+    price: 600,
+    availableCopies: 4
+},
+{
+    _id: 4,
+    title: "Atomic Habits",
+    author: "James Clear",
+    genre: "Self Help",
+    price: 850,
+    availableCopies: 2
+},
+{
+    _id: 5,
+    title: "Harry Potter",
+    author: "J.K Rowling",
+    genre: "Fiction",
+    price: 700,
+    availableCopies: 0
+}
 ])
-{
-  acknowledged: true,
-  insertedIds: {
-    '0': ObjectId('6a16646c022ba6b6bfcbd0db'),
-    '1': ObjectId('6a16646c022ba6b6bfcbd0dc'),
-    '2': ObjectId('6a16646c022ba6b6bfcbd0dd'),
-    '3': ObjectId('6a16646c022ba6b6bfcbd0de'),
-    '4': ObjectId('6a16646c022ba6b6bfcbd0df')
-  }
-}
-db.books.find({})
-{
-  _id: ObjectId('6a16646c022ba6b6bfcbd0db'),
-  title: 'Moksh',
-  author: 'Vedvyas',
-  genre: 'Sprituality',
-  price: 500,
-  availableCopies: 35
-}
-{
-  _id: ObjectId('6a16646c022ba6b6bfcbd0dc'),
-  title: 'Two Tales',
-  author: 'harsh',
-  genre: 'Story',
-  price: 300,
-  availableCopies: 2
-}
-{
-  _id: ObjectId('6a16646c022ba6b6bfcbd0dd'),
-  title: 'Love is Blind',
-  author: 'rohit',
-  genre: 'Story',
-  price: 400,
-  availableCopies: 5
-}
-{
-  _id: ObjectId('6a16646c022ba6b6bfcbd0de'),
-  title: 'Bengal:The Original',
-  author: 'sara',
-  genre: 'Politics',
-  price: 1000,
-  availableCopies: 6
-}
-{
-  _id: ObjectId('6a16646c022ba6b6bfcbd0df'),
-  title: 'Food For Life',
-  author: 'Omkar',
-  genre: 'Recipe',
-  price: 500,
-  availableCopies: 4
-}
-db.books.find({price:{$gt:300,$lt:800}})
-{
-  _id: ObjectId('6a16646c022ba6b6bfcbd0db'),
-  title: 'Moksh',
-  author: 'Vedvyas',
-  genre: 'Sprituality',
-  price: 500,
-  availableCopies: 35
-}
-{
-  _id: ObjectId('6a16646c022ba6b6bfcbd0dd'),
-  title: 'Love is Blind',
-  author: 'rohit',
-  genre: 'Story',
-  price: 400,
-  availableCopies: 5
-}
-{
-  _id: ObjectId('6a16646c022ba6b6bfcbd0df'),
-  title: 'Food For Life',
-  author: 'Omkar',
-  genre: 'Recipe',
-  price: 500,
-  availableCopies: 4
-}
-db.books.find({genre:"Story"})
-{
-  _id: ObjectId('6a16646c022ba6b6bfcbd0dc'),
-  title: 'Two Tales',
-  author: 'harsh',
-  genre: 'Story',
-  price: 300,
-  availableCopies: 2
-}
-{
-  _id: ObjectId('6a16646c022ba6b6bfcbd0dd'),
-  title: 'Love is Blind',
-  author: 'rohit',
-  genre: 'Story',
-  price: 400,
-  availableCopies: 5
-}
-db.books.updateOne({title:"Moksh"},{$set:{price:1000}})
-{
-  acknowledged: true,
-  insertedId: null,
-  matchedCount: 1,
-  modifiedCount: 1,
-  upsertedCount: 0
-}
-db.books.find({})
-{
-  _id: ObjectId('6a16646c022ba6b6bfcbd0db'),
-  title: 'Moksh',
-  author: 'Vedvyas',
-  genre: 'Sprituality',
-  price: 1000,
-  availableCopies: 35
-}
-{
-  _id: ObjectId('6a16646c022ba6b6bfcbd0dc'),
-  title: 'Two Tales',
-  author: 'harsh',
-  genre: 'Story',
-  price: 300,
-  availableCopies: 2
-}
-{
-  _id: ObjectId('6a16646c022ba6b6bfcbd0dd'),
-  title: 'Love is Blind',
-  author: 'rohit',
-  genre: 'Story',
-  price: 400,
-  availableCopies: 5
-}
-{
-  _id: ObjectId('6a16646c022ba6b6bfcbd0de'),
-  title: 'Bengal:The Original',
-  author: 'sara',
-  genre: 'Politics',
-  price: 1000,
-  availableCopies: 6
-}
-{
-  _id: ObjectId('6a16646c022ba6b6bfcbd0df'),
-  title: 'Food For Life',
-  author: 'Omkar',
-  genre: 'Recipe',
-  price: 500,
-  availableCopies: 4
-}
-db.books.updateMany({availableCopies:{$gt:0}},{$inc:{availableCopies:2}})
-{
-  acknowledged: true,
-  insertedId: null,
-  matchedCount: 5,
-  modifiedCount: 5,
-  upsertedCount: 0
-}
-db.books.find({})
-{
-  _id: ObjectId('6a16646c022ba6b6bfcbd0db'),
-  title: 'Moksh',
-  author: 'Vedvyas',
-  genre: 'Sprituality',
-  price: 1000,
-  availableCopies: 37
-}
-{
-  _id: ObjectId('6a16646c022ba6b6bfcbd0dc'),
-  title: 'Two Tales',
-  author: 'harsh',
-  genre: 'Story',
-  price: 300,
-  availableCopies: 4
-}
-{
-  _id: ObjectId('6a16646c022ba6b6bfcbd0dd'),
-  title: 'Love is Blind',
-  author: 'rohit',
-  genre: 'Story',
-  price: 400,
-  availableCopies: 7
-}
-{
-  _id: ObjectId('6a16646c022ba6b6bfcbd0de'),
-  title: 'Bengal:The Original',
-  author: 'sara',
-  genre: 'Politics',
-  price: 1000,
-  availableCopies: 8
-}
-{
-  _id: ObjectId('6a16646c022ba6b6bfcbd0df'),
-  title: 'Food For Life',
-  author: 'Omkar',
-  genre: 'Recipe',
-  price: 500,
-  availableCopies: 6
-}
-db.deleteOne({genre:Recipe})
-ReferenceError: Recipe is not defined
-db.deleteOne({genre:"Recipe"})
-TypeError: db.deleteOne is not a function
-db.books.deleteOne({genre:"Recipe"})
-{
-  acknowledged: true,
-  deletedCount: 1
-}
-db.books.deleteMany({availableCopies:0})
-{
-  acknowledged: true,
-  deletedCount: 0
-}
-use hospital_db
-switched to db hospital_db
+
+db.books.find()
+
+db.books.find({
+    price: { $gte: 300, $lte: 800 }
+})
+
+db.books.find({
+    genre: "Fiction"
+})
+
+db.books.updateOne(
+    { title: "Atomic Habits" },
+    { $set: { price: 750 } }
+)
+
+db.books.updateMany(
+    { availableCopies: { $gt: 0 } },
+    { $inc: { availableCopies: 2 } }
+)
+
+db.books.deleteOne({
+    title: "Rich Dad Poor Dad"
+})
+
+db.books.deleteMany({
+    availableCopies: 0
+})
+
+
+
+use Hospital_DB
+
 db.createCollection("patients")
-{ ok: 1 }
+
 db.patients.insertMany([
-  {
-  name:"harsh",
-  age:23,
-  disease:"fever",
-  doctorAssigned:"Sara",
-  city:"Vasai-Virar"
-  },
-  {
-    name:"omkar",
-    age:24,
-    disease:"malaria",
-    doctorAssigned:"shigvan",
-    city:"Vasai-Virar"
-  },
-  {
-    name:"rohit",
-    age:30,
-    disease:"dengue",
-    doctorAssigned:"lokhande",
-    city:"Palghar"
-  },
-  {
-    name:"rupesh",
-    age:35,
-    disease:"pnuemonia",
-    doctorAssigned:"dingankar",
-    city:"Bhayandar"
-  },
-  {
-    name:"Jay",
-    age:22,
-    disease:"Diabetes",
-    doctorAssigned:"Patil",
-    city:"Vikaramgad"
-  }
+{
+    _id: 101,
+    name: "Rahul",
+    age: 25,
+    disease: "Diabetes",
+    doctorAssigned: "Dr. Mehta",
+    city: "Mumbai",
+    email: "rahul@gmail.com"
+},
+{
+    _id: 102,
+    name: "Aman",
+    age: 45,
+    disease: "Fever",
+    doctorAssigned: "Dr. Sharma",
+    city: "Delhi",
+    email: "aman@gmail.com"
+},
+{
+    _id: 103,
+    name: "Priya",
+    age: 65,
+    disease: "Heart Disease",
+    doctorAssigned: "Dr. Patel",
+    city: "Pune",
+    email: "priya@gmail.com"
+},
+{
+    _id: 104,
+    name: "Sneha",
+    age: 32,
+    disease: "Diabetes",
+    doctorAssigned: "Dr. Khan",
+    city: "Mumbai",
+    email: "sneha@gmail.com"
+},
+{
+    _id: 105,
+    name: "Rohit",
+    age: 70,
+    disease: "Asthma",
+    doctorAssigned: "Dr. Singh",
+    city: "Nagpur",
+    email: "rohit@gmail.com"
+}
 ])
-{
-  acknowledged: true,
-  insertedIds: {
-    '0': ObjectId('6a16681d022ba6b6bfcbd0e0'),
-    '1': ObjectId('6a16681d022ba6b6bfcbd0e1'),
-    '2': ObjectId('6a16681d022ba6b6bfcbd0e2'),
-    '3': ObjectId('6a16681d022ba6b6bfcbd0e3'),
-    '4': ObjectId('6a16681d022ba6b6bfcbd0e4')
-  }
-}
-db.patients.find({})
-{
-  _id: ObjectId('6a16681d022ba6b6bfcbd0e0'),
-  name: 'harsh',
-  age: 23,
-  disease: 'fever',
-  doctorAssigned: 'Sara',
-  city: 'Vasai-Virar'
-}
-{
-  _id: ObjectId('6a16681d022ba6b6bfcbd0e1'),
-  name: 'omkar',
-  age: 24,
-  disease: 'malaria',
-  doctorAssigned: 'shigvan',
-  city: 'Vasai-Virar'
-}
-{
-  _id: ObjectId('6a16681d022ba6b6bfcbd0e2'),
-  name: 'rohit',
-  age: 30,
-  disease: 'dengue',
-  doctorAssigned: 'lokhande',
-  city: 'Palghar'
-}
-{
-  _id: ObjectId('6a16681d022ba6b6bfcbd0e3'),
-  name: 'rupesh',
-  age: 35,
-  disease: 'pnuemonia',
-  doctorAssigned: 'dingankar',
-  city: 'Bhayandar'
-}
-{
-  _id: ObjectId('6a16681d022ba6b6bfcbd0e4'),
-  name: 'Jay',
-  age: 22,
-  disease: 'Diabetes',
-  doctorAssigned: 'Patil',
-  city: 'Vikaramgad'
-}
-db.patients.find({age:{$gt:20,$lt:50}})
-{
-  _id: ObjectId('6a16681d022ba6b6bfcbd0e0'),
-  name: 'harsh',
-  age: 23,
-  disease: 'fever',
-  doctorAssigned: 'Sara',
-  city: 'Vasai-Virar'
-}
-{
-  _id: ObjectId('6a16681d022ba6b6bfcbd0e1'),
-  name: 'omkar',
-  age: 24,
-  disease: 'malaria',
-  doctorAssigned: 'shigvan',
-  city: 'Vasai-Virar'
-}
-{
-  _id: ObjectId('6a16681d022ba6b6bfcbd0e2'),
-  name: 'rohit',
-  age: 30,
-  disease: 'dengue',
-  doctorAssigned: 'lokhande',
-  city: 'Palghar'
-}
-{
-  _id: ObjectId('6a16681d022ba6b6bfcbd0e3'),
-  name: 'rupesh',
-  age: 35,
-  disease: 'pnuemonia',
-  doctorAssigned: 'dingankar',
-  city: 'Bhayandar'
-}
-{
-  _id: ObjectId('6a16681d022ba6b6bfcbd0e4'),
-  name: 'Jay',
-  age: 22,
-  disease: 'Diabetes',
-  doctorAssigned: 'Patil',
-  city: 'Vikaramgad'
-}
-db.patients.find({disease:"Diabetes"})
-{
-  _id: ObjectId('6a16681d022ba6b6bfcbd0e4'),
-  name: 'Jay',
-  age: 22,
-  disease: 'Diabetes',
-  doctorAssigned: 'Patil',
-  city: 'Vikaramgad'
-}
-db.patients.updateOne({name:'Jay'},{$set:{doctorAssigned:"Chaudhari"}})
-{
-  acknowledged: true,
-  insertedId: null,
-  matchedCount: 1,
-  modifiedCount: 1,
-  upsertedCount: 0
-}
-db.patients.updateMany({age:{$gt:60}},{$inc:{age:1}})
-{
-  acknowledged: true,
-  insertedId: null,
-  matchedCount: 0,
-  modifiedCount: 0,
-  upsertedCount: 0
-}
-db.patients.deleteOne(name:"Jay")
-SyntaxError: Unexpected token, expected "," (1:26)
 
-> 1 | db.patients.deleteOne(name:"Jay")
-    |                           ^
-db.patients.deleteOne({name:"Jay"})
-{
-  acknowledged: true,
-  deletedCount: 1
-}
-db.patients.deleteMany({city:"Vasai-Virar"})
-{
-  acknowledged: true,
-  deletedCount: 2
-}
-db.books.findOne({name:"rupesh"})
-null
-db.books.findOne({name:"rohit"})
-null
-db.patients.findOne({name:"rohit"})
-{
-  _id: ObjectId('6a16681d022ba6b6bfcbd0e2'),
-  name: 'rohit',
-  age: 30,
-  disease: 'dengue',
-  doctorAssigned: 'lokhande',
-  city: 'Palghar'
-}
-db.patients.find({name,email})
-ReferenceError: name is not defined
-db.patients.find({_id:0},{name:1},{email:1})
-db.patients.find({_id:0},{name:1},{email:1})
-db.patients.find({ },{name:1},{email:1})
-{
-  _id: ObjectId('6a16681d022ba6b6bfcbd0e2'),
-  name: 'rohit'
-}
-{
-  _id: ObjectId('6a16681d022ba6b6bfcbd0e3'),
-  name: 'rupesh'
-}
-db.patients.find().sort({age:1})
-{
-  _id: ObjectId('6a16681d022ba6b6bfcbd0e2'),
-  name: 'rohit',
-  age: 30,
-  disease: 'dengue',
-  doctorAssigned: 'lokhande',
-  city: 'Palghar'
-}
-{
-  _id: ObjectId('6a16681d022ba6b6bfcbd0e3'),
-  name: 'rupesh',
-  age: 35,
-  disease: 'pnuemonia',
-  doctorAssigned: 'dingankar',
-  city: 'Bhayandar'
-}
-db.patients.find({})
-{
-  _id: ObjectId('6a16681d022ba6b6bfcbd0e2'),
-  name: 'rohit',
-  age: 30,
-  disease: 'dengue',
-  doctorAssigned: 'lokhande',
-  city: 'Palghar'
-}
-{
-  _id: ObjectId('6a16681d022ba6b6bfcbd0e3'),
-  name: 'rupesh',
-  age: 35,
-  disease: 'pnuemonia',
-  doctorAssigned: 'dingankar',
-  city: 'Bhayandar'
-}
-db.patients.find().sort({age:-1})
-{
-  _id: ObjectId('6a16681d022ba6b6bfcbd0e3'),
-  name: 'rupesh',
-  age: 35,
-  disease: 'pnuemonia',
-  doctorAssigned: 'dingankar',
-  city: 'Bhayandar'
-}
-{
-  _id: ObjectId('6a16681d022ba6b6bfcbd0e2'),
-  name: 'rohit',
-  age: 30,
-  disease: 'dengue',
-  doctorAssigned: 'lokhande',
-  city: 'Palghar'
-}
-db.patients.find().limit(1)
-{
-  _id: ObjectId('6a16681d022ba6b6bfcbd0e2'),
-  name: 'rohit',
-  age: 30,
-  disease: 'dengue',
-  doctorAssigned: 'lokhande',
-  city: 'Palghar'
-}
-db.patients.find().skip(1)
-{
-  _id: ObjectId('6a16681d022ba6b6bfcbd0e3'),
-  name: 'rupesh',
-  age: 35,
-  disease: 'pnuemonia',
-  doctorAssigned: 'dingankar',
-  city: 'Bhayandar'
-}
-db.patients.find(age:{$gt:40})
-SyntaxError: Unexpected token, expected "," (1:20)
+db.patients.find()
 
-> 1 | db.patients.find(age:{$gt:40})
-    |                     ^
-db.patients.find({age:{$gt:40}})
-db.books.find({price:{$lt:500}})
-use library_db
-switched to db library_db
-db.books.find({price:{$lt:500}})
-{
-  _id: ObjectId('6a16646c022ba6b6bfcbd0dc'),
-  title: 'Two Tales',
-  author: 'harsh',
-  genre: 'Story',
-  price: 300,
-  availableCopies: 4
-}
-{
-  _id: ObjectId('6a16646c022ba6b6bfcbd0dd'),
-  title: 'Love is Blind',
-  author: 'rohit',
-  genre: 'Story',
-  price: 400,
-  availableCopies: 7
-}
-db.books.find({
-  $and:[
-    {
-      genre:"Story",
-    },
-    {
-      price:{$gt:300}
-    }
-  ]
+db.patients.find({
+    age: { $gte: 20, $lte: 50 }
 })
-{
-  _id: ObjectId('6a16646c022ba6b6bfcbd0dd'),
-  title: 'Love is Blind',
-  author: 'rohit',
-  genre: 'Story',
-  price: 400,
-  availableCopies: 7
-}
-db.books.find({
-  $or:[
-    {
-      genre:"Story",
-    },
-    {
-      price:{$gt:300}
-    }
-  ]
+
+db.patients.find({
+    disease: "Diabetes"
 })
-{
-  _id: ObjectId('6a16646c022ba6b6bfcbd0db'),
-  title: 'Moksh',
-  author: 'Vedvyas',
-  genre: 'Sprituality',
-  price: 1000,
-  availableCopies: 37
-}
-{
-  _id: ObjectId('6a16646c022ba6b6bfcbd0dc'),
-  title: 'Two Tales',
-  author: 'harsh',
-  genre: 'Story',
-  price: 300,
-  availableCopies: 4
-}
+
+db.patients.updateOne(
+    { name: "Rahul" },
+    { $set: { doctorAssigned: "Dr. Verma" } }
+)
+
+db.patients.updateMany(
+    { age: { $gt: 60 } },
+    { $inc: { age: 1 } }
+)
+
+db.patients.deleteOne({
+    name: "Aman"
+})
+
+db.patients.deleteMany({
+    city: "Nagpur"
+})
+
+db.patients.findOne()
+
+db.patients.find(
+    {},
+    { name: 1, email: 1, _id: 0 }
+)
+
+db.patients.find().sort({ age: 1 })
+
+db.patients.find().sort({ age: -1 })
+
+db.patients.find().limit(3)
+
+db.patients.find().skip(2)
+
+db.patients.find({
+    age: { $gt: 40 }
+})
+
+use Library_DB
+
+db.books.find({
+    price: { $lt: 500 }
+})
+
+db.books.find({
+    $and: [
+        { genre: "Fiction" },
+        { price: { $lt: 800 } }
+    ]
+})
+
+use Hospital_DB
+
+db.patients.find({
+    $or: [
+        { city: "Mumbai" },
+        { disease: "Asthma" }
+    ]
+})
